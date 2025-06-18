@@ -29,6 +29,22 @@ namespace ModeloGarantiaTCS.Models
         /// <summary>
         /// Realiza los cálculos de fechas tentativas y estado de garantía basado en las reglas del modelo.
         /// </summary>
+        /// 
+        private DateTime SumarDiasHabiles(DateTime inicio, int dias)
+        {
+            int sumados = 0;
+            var fecha = inicio;
+            while (sumados < dias)
+            {
+                fecha = fecha.AddDays(1);
+                if (fecha.DayOfWeek != DayOfWeek.Saturday && fecha.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    sumados++;
+                }
+            }
+            return fecha;
+        }
+
         public void CalcularFechas()
         {
             if (FechaCertificacion.HasValue)
@@ -36,7 +52,7 @@ namespace ModeloGarantiaTCS.Models
                 // Paso a producción tentativo: 2 meses tras certificación
                 FechaTentativaPasoProduccion = FechaCertificacion.Value.AddMonths(2);
 
-                // Estabilización tentativo: según complejidad
+                // Estabilización: calcula días hábiles según complejidad
                 int diasEstabilizacion = 0;
                 switch (Complejidad?.ToLower())
                 {
@@ -50,9 +66,9 @@ namespace ModeloGarantiaTCS.Models
                         diasEstabilizacion = 15;
                         break;
                 }
-                FechaTentativaEstabilizacion = FechaTentativaPasoProduccion?.AddDays(diasEstabilizacion);
+                FechaTentativaEstabilizacion = SumarDiasHabiles(FechaTentativaPasoProduccion.Value, diasEstabilizacion);
 
-                // Garantía tentativo: según horas
+                // Garantía: calcula en semanas calendario
                 int semanasGarantia = 0;
                 if (HorasImplementacion <= 100)
                     semanasGarantia = 5;

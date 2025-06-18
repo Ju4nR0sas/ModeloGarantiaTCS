@@ -42,7 +42,8 @@
             // 
             // btnCargarCsv
             // 
-            this.btnCargarCsv.Location = new System.Drawing.Point(12, 12);
+            this.btnCargarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCargarCsv.Location = new System.Drawing.Point(12, 415);
             this.btnCargarCsv.Name = "btnCargarCsv";
             this.btnCargarCsv.Size = new System.Drawing.Size(129, 23);
             this.btnCargarCsv.TabIndex = 0;
@@ -65,7 +66,8 @@
             // 
             // btnExportarCsv
             // 
-            this.btnExportarCsv.Location = new System.Drawing.Point(147, 12);
+            this.btnExportarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportarCsv.Location = new System.Drawing.Point(147, 415);
             this.btnExportarCsv.Name = "btnExportarCsv";
             this.btnExportarCsv.Size = new System.Drawing.Size(141, 23);
             this.btnExportarCsv.TabIndex = 2;
@@ -85,8 +87,7 @@
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFiltrar.Location = new System.Drawing.Point(618, 10);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(80, 23);
@@ -130,6 +131,7 @@
             // 
             // btnBorrarFiltro
             // 
+            this.btnBorrarFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBorrarFiltro.Location = new System.Drawing.Point(704, 10);
             this.btnBorrarFiltro.Name = "btnBorrarFiltro";
             this.btnBorrarFiltro.Size = new System.Drawing.Size(75, 23);
