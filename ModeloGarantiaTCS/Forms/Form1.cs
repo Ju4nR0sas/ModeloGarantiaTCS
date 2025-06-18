@@ -19,16 +19,16 @@ namespace ModeloGarantiaTCS
         {
             InitializeComponent();
 
-            // Configura el DataGridView como solo lectura
+            // Configura DataGridView como solo lectura
             dataGridViewTickets.ReadOnly = true;
 
-            // Configura el placeholder del filtro clave
+            // Configura placeholder en el filtro
             txtFiltroClave.ForeColor = Color.Gray;
-            txtFiltroClave.Text = "Ingrese número de caso / ticket";
+            txtFiltroClave.Text = "Ingrese número de caso";
 
             txtFiltroClave.GotFocus += (s, e) =>
             {
-                if (txtFiltroClave.Text == "Ingrese número de caso / ticket")
+                if (txtFiltroClave.Text == "Ingrese número de caso")
                 {
                     txtFiltroClave.Text = "";
                     txtFiltroClave.ForeColor = Color.Black;
@@ -43,6 +43,9 @@ namespace ModeloGarantiaTCS
                     txtFiltroClave.ForeColor = Color.Gray;
                 }
             };
+
+            // Conectar KeyPress para validar números
+            txtFiltroClave.KeyPress += txtFiltroClave_KeyPress;
         }
 
         private void MostrarTickets()
@@ -111,7 +114,14 @@ namespace ModeloGarantiaTCS
 
             if (string.IsNullOrEmpty(clave) || clave == "Ingrese clave para filtrar")
             {
-                MostrarTickets(); // Muestra todo
+                MostrarTickets();
+                return;
+            }
+
+            // Validar que solo haya números
+            if (!clave.All(char.IsDigit))
+            {
+                MessageBox.Show("Por favor ingrese solo números en el filtro de clave.", "Filtro inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -119,10 +129,23 @@ namespace ModeloGarantiaTCS
                 .Where(t => t.Clave != null && t.Clave.IndexOf(clave, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
 
+            if (filtrados.Count == 0)
+            {
+                MessageBox.Show("No se encontraron registros con ese filtro.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             dataGridViewTickets.DataSource = null;
             dataGridViewTickets.DataSource = filtrados;
-
             AplicarEstiloGrid();
+        }
+
+        private void txtFiltroClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea el carácter
+            }
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -165,7 +188,7 @@ namespace ModeloGarantiaTCS
             // Filas alternas
             dataGridViewTickets.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
-            // Colores para filas con paso producción vencido
+            // Color para filas con paso a producción vencido
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
             {
                 if (row.Cells["FechaTentativaPasoProduccion"].Value != null &&
@@ -178,7 +201,7 @@ namespace ModeloGarantiaTCS
                 }
             }
 
-            // Reordenar columna EstadoCalculado después de Resumen
+            // Mover EstadoCalculado después de Resumen
             if (dataGridViewTickets.Columns["EstadoCalculado"] != null &&
                 dataGridViewTickets.Columns["Resumen"] != null)
             {
