@@ -49,6 +49,11 @@ namespace ModeloGarantiaTCS
                 }
             }
         }
+        private void btnBorrarFiltro_Click(object sender, EventArgs e)
+        {
+            txtFiltroClave.Text = "";
+            MostrarTickets();
+        }
 
         private void dataGridViewTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -177,6 +182,5 @@ namespace ModeloGarantiaTCS
             dataGridViewTickets.AllowUserToAddRows = false;
             dataGridViewTickets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-
     }
 }

@@ -36,6 +36,7 @@
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPagina = new System.Windows.Forms.Label();
+            this.btnBorrarFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             // 
             this.txtFiltroClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFiltroClave.Location = new System.Drawing.Point(402, 14);
+            this.txtFiltroClave.Location = new System.Drawing.Point(341, 12);
             this.txtFiltroClave.Name = "txtFiltroClave";
             this.txtFiltroClave.Size = new System.Drawing.Size(271, 20);
             this.txtFiltroClave.TabIndex = 3;
@@ -86,9 +87,9 @@
             // 
             this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFiltrar.Location = new System.Drawing.Point(679, 12);
+            this.btnFiltrar.Location = new System.Drawing.Point(618, 10);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(109, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(80, 23);
             this.btnFiltrar.TabIndex = 4;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
@@ -127,11 +128,22 @@
             this.lblPagina.Text = "Página: 1";
             this.lblPagina.Click += new System.EventHandler(this.lblPagina_Click);
             // 
+            // btnBorrarFiltro
+            // 
+            this.btnBorrarFiltro.Location = new System.Drawing.Point(704, 10);
+            this.btnBorrarFiltro.Name = "btnBorrarFiltro";
+            this.btnBorrarFiltro.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrarFiltro.TabIndex = 8;
+            this.btnBorrarFiltro.Text = "Limpiar";
+            this.btnBorrarFiltro.UseVisualStyleBackColor = true;
+            this.btnBorrarFiltro.Click += new System.EventHandler(this.btnBorrarFiltro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
@@ -158,6 +170,7 @@
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Label lblPagina;
+        private System.Windows.Forms.Button btnBorrarFiltro;
     }
 }
 
