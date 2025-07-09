@@ -41,16 +41,16 @@ namespace ModeloGarantiaTCS.Services
                         // Resumen de la incidencia
                         Resumen = dict.ContainsKey("Resumen") ? dict["Resumen"]?.ToString() : "",
 
-                        // Tipo de incidencia
+                        // Tipo de incidencia                        
                         Tipo = dict.ContainsKey("Tipo de Incidencia") ? dict["Tipo de Incidencia"]?.ToString() : "",
 
                         // Complejidad de la incidencia
                         Complejidad = dict.ContainsKey("Campo personalizado (Complejidad)") ? dict["Campo personalizado (Complejidad)"]?.ToString() : "",
 
                         // Horas de implementación (esfuerzo total), se calculan cuando en complejidad no se especifica
-                        HorasImplementacion = int.TryParse(
-                            dict.ContainsKey("Campo personalizado (Esfuerzo Total)") ? dict["Campo personalizado (Esfuerzo Total)"]?.ToString() : "0",
-                            out int h) ? h : 0,
+                        EsfuerzoTotal = double.TryParse(
+                            dict.ContainsKey("Campo personalizado (Esfuerzo Total)") ? dict["Campo personalizado (Esfuerzo Total)"]?.ToString().Replace(',', '.') : "",
+                            out double h) ? h : 0.0,
 
                         // Campo de fecha crtificación
                         FechaCertificacion = DateTime.TryParse(
@@ -61,9 +61,9 @@ namespace ModeloGarantiaTCS.Services
                     // Si no hay complejidad, inferir por horas
                     if (string.IsNullOrWhiteSpace(ticket.Complejidad))
                     {
-                        if (ticket.HorasImplementacion <= 100)
+                        if (ticket.EsfuerzoTotal <= 100.0)
                             ticket.Complejidad = "Baja";
-                        else if (ticket.HorasImplementacion <= 200)
+                        else if (ticket.EsfuerzoTotal <= 200.0)
                             ticket.Complejidad = "Media";
                         else
                             ticket.Complejidad = "Alta";
@@ -74,6 +74,8 @@ namespace ModeloGarantiaTCS.Services
                 }
             }
 
+            // Retorna solo tickets que conincidan con el Tipo Solicitud de software
+            tickets = tickets.Where(t => t.Tipo.Equals("Solicitud de software", StringComparison.OrdinalIgnoreCase)).ToList();
             return tickets;
         }
 

@@ -16,7 +16,7 @@ namespace ModeloGarantiaTCS.Models
         public string Resumen { get; set; }
         public string Tipo { get; set; }
         public string Complejidad { get; set; }
-        public float HorasImplementacion { get; set; }
+        public double EsfuerzoTotal { get; set; }
         public DateTime? FechaCertificacion { get; set; }
 
         // Fechas calculadas
@@ -70,9 +70,9 @@ namespace ModeloGarantiaTCS.Models
 
                 // Garantía: calcula en semanas calendario
                 int semanasGarantia = 0;
-                if (HorasImplementacion <= 100)
+                if (EsfuerzoTotal <= 100)
                     semanasGarantia = 5;
-                else if (HorasImplementacion <= 200)
+                else if (EsfuerzoTotal <= 200)
                     semanasGarantia = 8;
                 else
                     semanasGarantia = 16;
