@@ -16,7 +16,7 @@ namespace ModeloGarantiaTCS.Models
         public string Resumen { get; set; }
         public string Tipo { get; set; }
         public string Complejidad { get; set; }
-        public int HorasImplementacion { get; set; }
+        public float HorasImplementacion { get; set; }
         public DateTime? FechaCertificacion { get; set; }
 
         // Fechas calculadas

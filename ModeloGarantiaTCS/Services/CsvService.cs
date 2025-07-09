@@ -35,15 +35,26 @@ namespace ModeloGarantiaTCS.Services
 
                     var ticket = new Ticket
                     {
+                        // Clave de incidencia - GPTCS-NNNNN
                         Clave = dict.ContainsKey("Clave de incidencia") ? dict["Clave de incidencia"]?.ToString() : "",
+
+                        // Resumen de la incidencia
                         Resumen = dict.ContainsKey("Resumen") ? dict["Resumen"]?.ToString() : "",
-                        Tipo = dict.ContainsKey("Tipo de incidencia") ? dict["Tipo de incidencia"]?.ToString() : "",
+
+                        // Tipo de incidencia
+                        Tipo = dict.ContainsKey("Tipo de Incidencia") ? dict["Tipo de Incidencia"]?.ToString() : "",
+
+                        // Complejidad de la incidencia
                         Complejidad = dict.ContainsKey("Campo personalizado (Complejidad)") ? dict["Campo personalizado (Complejidad)"]?.ToString() : "",
+
+                        // Horas de implementación (esfuerzo total), se calculan cuando en complejidad no se especifica
                         HorasImplementacion = int.TryParse(
-                            dict.ContainsKey("Campo personalizado (Horas implementación del requerimiento)") ? dict["Campo personalizado (Horas implementación del requerimiento)"]?.ToString() : "0",
+                            dict.ContainsKey("Campo personalizado (Esfuerzo Total)") ? dict["Campo personalizado (Esfuerzo Total)"]?.ToString() : "0",
                             out int h) ? h : 0,
+
+                        // Campo de fecha crtificación
                         FechaCertificacion = DateTime.TryParse(
-                            dict.ContainsKey("Campo personalizado (Fecha certificación)") ? dict["Campo personalizado (Fecha certificación)"]?.ToString() : "",
+                            dict.ContainsKey("Campo personalizado (Fecha Vencimiento Certificacion)") ? dict["Campo personalizado (Fecha Vencimiento Certificacion)"]?.ToString() : "",
                             out DateTime fc) ? fc : (DateTime?)null
                     };
 
