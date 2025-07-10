@@ -155,7 +155,8 @@
             this.Controls.Add(this.dataGridViewTickets);
             this.Controls.Add(this.btnCargarCsv);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Calculo para Garantia";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -49,7 +49,7 @@ namespace ModeloGarantiaTCS.Services
 
                         // Horas de implementación (esfuerzo total), se calculan cuando en complejidad no se especifica
                         EsfuerzoTotal = double.TryParse(
-                            dict.ContainsKey("Campo personalizado (Esfuerzo Total)") ? dict["Campo personalizado (Esfuerzo Total)"]?.ToString().Replace(',', '.') : "",
+                            dict.ContainsKey("Campo personalizado (Esfuerzo Total)") ? dict["Campo personalizado (Esfuerzo Total)"]?.ToString() : "",
                             out double h) ? h : 0.0,
 
                         // Campo de fecha crtificación
