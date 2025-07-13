@@ -8,13 +8,14 @@ using System.Windows.Forms;
 
 namespace ModeloGarantiaTCS
 {
+    
     public partial class Form1 : Form
     {
         private List<Ticket> _tickets = new List<Ticket>();
         private CsvService _csvService = new CsvService();
         private int _paginaActual = 1;
         private int _registrosPorPagina;
-
+        private PaginacionService<Ticket> _paginador;
         public Form1()
         {
             InitializeComponent();
@@ -52,27 +53,22 @@ namespace ModeloGarantiaTCS
         {
             _paginaActual = 1;
             _registrosPorPagina = Math.Max(1, dataGridViewTickets.DisplayRectangle.Height / dataGridViewTickets.RowTemplate.Height);
+            _paginador = new PaginacionService<Ticket>(_tickets, _registrosPorPagina);
             MostrarPagina();
         }
 
         private void MostrarPagina()
         {
-            var paged = _tickets
-                .Skip((_paginaActual - 1) * _registrosPorPagina)
-                .Take(_registrosPorPagina)
-                .ToList();
+            var paged = _paginador.ObtenerPagina(_paginaActual);
 
             dataGridViewTickets.DataSource = null;
             dataGridViewTickets.DataSource = paged;
-            lblPagina.Text = $"Página: {_paginaActual}";
+            lblPagina.Text = $"Página: {_paginaActual} de {_paginador.TotalPaginas}";
 
             AplicarEstiloGrid();
         }
 
-        private int PaginaMaxima()
-        {
-            return (int)Math.Ceiling((double)_tickets.Count / _registrosPorPagina);
-        }
+        private int PaginaMaxima() => _paginador.TotalPaginas;
 
         private void button1_Click(object sender, EventArgs e)
         {
