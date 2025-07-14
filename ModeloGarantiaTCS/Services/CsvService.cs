@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using ModeloGarantiaTCS.Models;
+using ModeloGarantiaTCS.Utils;
 
 namespace ModeloGarantiaTCS.Services
 {
@@ -123,12 +124,7 @@ namespace ModeloGarantiaTCS.Services
                             FechaCertificacion = fechaCert
                         };
 
-                        // Complejidad inferida por horas
-                        if (horas <= 100) ticket.Complejidad = "Baja";
-                        else if (horas <= 200) ticket.Complejidad = "Media";
-                        else ticket.Complejidad = "Alta";
-
-                        ticket.CalcularFechas();
+                        CalculadoraFechas.Procesar(ticket);
                         tickets.Add(ticket);
                     }
                 }

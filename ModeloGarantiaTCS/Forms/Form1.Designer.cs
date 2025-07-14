@@ -37,6 +37,8 @@
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPagina = new System.Windows.Forms.Label();
             this.btnBorrarFiltro = new System.Windows.Forms.Button();
+            this.btnSoloCertificacion = new System.Windows.Forms.Button();
+            this.btnSoloCerrados = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,11 +142,33 @@
             this.btnBorrarFiltro.UseVisualStyleBackColor = true;
             this.btnBorrarFiltro.Click += new System.EventHandler(this.btnBorrarFiltro_Click);
             // 
+            // btnSoloCertificacion
+            // 
+            this.btnSoloCertificacion.Location = new System.Drawing.Point(16, 9);
+            this.btnSoloCertificacion.Name = "btnSoloCertificacion";
+            this.btnSoloCertificacion.Size = new System.Drawing.Size(125, 23);
+            this.btnSoloCertificacion.TabIndex = 9;
+            this.btnSoloCertificacion.Text = "Con Certificacion";
+            this.btnSoloCertificacion.UseVisualStyleBackColor = true;
+            this.btnSoloCertificacion.Click += new System.EventHandler(this.btnSoloCertificacion_Click);
+            // 
+            // btnSoloCerrados
+            // 
+            this.btnSoloCerrados.Location = new System.Drawing.Point(147, 10);
+            this.btnSoloCerrados.Name = "btnSoloCerrados";
+            this.btnSoloCerrados.Size = new System.Drawing.Size(141, 23);
+            this.btnSoloCerrados.TabIndex = 10;
+            this.btnSoloCerrados.Text = "En Garantia";
+            this.btnSoloCerrados.UseVisualStyleBackColor = true;
+            this.btnSoloCerrados.Click += new System.EventHandler(this.btnSoloCerrados_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSoloCerrados);
+            this.Controls.Add(this.btnSoloCertificacion);
             this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
@@ -174,6 +198,8 @@
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Label lblPagina;
         private System.Windows.Forms.Button btnBorrarFiltro;
+        private System.Windows.Forms.Button btnSoloCertificacion;
+        private System.Windows.Forms.Button btnSoloCerrados;
     }
 }
 

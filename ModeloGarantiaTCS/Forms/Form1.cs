@@ -16,6 +16,26 @@ namespace ModeloGarantiaTCS
         private int _paginaActual = 1;
         private int _registrosPorPagina;
         private PaginacionService<Ticket> _paginador;
+        private bool _filtroActivo = false;
+
+        /// <summary>
+        /// Devuelve true si existe al menos un ticket cargado; de lo contrario
+        /// muestra un mensaje y devuelve false.
+        /// </summary>
+        private bool HayTicketsCargados()
+        {
+            if (_tickets == null || _tickets.Count == 0)
+            {
+                MessageBox.Show(
+                    "Primero debes cargar un archivo CSV.",
+                    "Sin datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -55,6 +75,7 @@ namespace ModeloGarantiaTCS
             _registrosPorPagina = Math.Max(1, dataGridViewTickets.DisplayRectangle.Height / dataGridViewTickets.RowTemplate.Height);
             _paginador = new PaginacionService<Ticket>(_tickets, _registrosPorPagina);
             MostrarPagina();
+            DesactivarFiltroVista();
         }
 
         private void MostrarPagina()
@@ -86,7 +107,8 @@ namespace ModeloGarantiaTCS
         private void btnBorrarFiltro_Click(object sender, EventArgs e)
         {
             txtFiltroClave.Text = "";
-            MostrarTickets();
+            DesactivarFiltroVista();
+            MostrarTickets();          
         }
 
         private void btnExportarCsv_Click(object sender, EventArgs e)
@@ -146,6 +168,8 @@ namespace ModeloGarantiaTCS
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
+            if (_filtroActivo) return;
+
             if (_paginaActual > 1)
             {
                 _paginaActual--;
@@ -155,6 +179,8 @@ namespace ModeloGarantiaTCS
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
+            if (_filtroActivo) return;
+
             if (_paginaActual < PaginaMaxima())
             {
                 _paginaActual++;
@@ -174,6 +200,10 @@ namespace ModeloGarantiaTCS
             // Ocultar la columna “Complejidad”
             if (dataGridViewTickets.Columns["Complejidad"] != null)
                 dataGridViewTickets.Columns["Complejidad"].Visible = false;
+
+            // Ocultar la columna "En flujo"
+            if (dataGridViewTickets.Columns["Flujo"] != null)
+                dataGridViewTickets.Columns["Flujo"].Visible = false;
 
             // Formato de fechas …
             if (dataGridViewTickets.Columns["FechaCertificacion"] != null)
@@ -231,6 +261,50 @@ namespace ModeloGarantiaTCS
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        /// Deshabilita paginación y marca la vista como filtrada.
+        private void ActivarFiltroVista(string descripcion)
+        {
+            _filtroActivo = true;
+            btnAnterior.Enabled = false;
+            btnSiguiente.Enabled = false;
+            lblPagina.Text = descripcion;
+        }
+
+        /// Vuelve al modo de paginación normal.
+        private void DesactivarFiltroVista()
+        {
+            _filtroActivo = false;
+            btnAnterior.Enabled = true;
+            btnSiguiente.Enabled = true;
+        }
+
+
+        private void btnSoloCertificacion_Click(object sender, EventArgs e)
+        {
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.Flujo == EstadoFlujo.EnCertificacion)
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: certificación");
+        }
+
+        private void btnSoloCerrados_Click(object sender, EventArgs e)
+        {
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.Flujo == EstadoFlujo.Cerrado)
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: cerrados"); ;
         }
     }
 }
