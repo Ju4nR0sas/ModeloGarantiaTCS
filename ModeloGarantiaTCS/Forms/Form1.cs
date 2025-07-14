@@ -171,7 +171,11 @@ namespace ModeloGarantiaTCS
             dataGridViewTickets.AllowUserToAddRows = false;
             dataGridViewTickets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Formato de fechas
+            // 🆕 Ocultar la columna “Complejidad”
+            if (dataGridViewTickets.Columns["Complejidad"] != null)
+                dataGridViewTickets.Columns["Complejidad"].Visible = false;
+
+            // Formato de fechas …
             if (dataGridViewTickets.Columns["FechaCertificacion"] != null)
                 dataGridViewTickets.Columns["FechaCertificacion"].DefaultCellStyle.Format = "dd/MM/yyyy";
             if (dataGridViewTickets.Columns["FechaTentativaPasoProduccion"] != null)
@@ -184,16 +188,14 @@ namespace ModeloGarantiaTCS
             // Filas alternas
             dataGridViewTickets.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
-            // Color para filas con paso a producción vencido
+            // Color para filas con paso a producción vencido …
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
             {
                 if (row.Cells["FechaTentativaPasoProduccion"].Value != null &&
-                    DateTime.TryParse(row.Cells["FechaTentativaPasoProduccion"].Value.ToString(), out DateTime fechaProd))
+                    DateTime.TryParse(row.Cells["FechaTentativaPasoProduccion"].Value.ToString(), out DateTime fechaProd) &&
+                    fechaProd < DateTime.Today)
                 {
-                    if (fechaProd < DateTime.Today)
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightCoral;
-                    }
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
                 }
             }
 
@@ -201,10 +203,11 @@ namespace ModeloGarantiaTCS
             if (dataGridViewTickets.Columns["EstadoCalculado"] != null &&
                 dataGridViewTickets.Columns["Resumen"] != null)
             {
-                int indexResumen = dataGridViewTickets.Columns["Resumen"].DisplayIndex;
-                dataGridViewTickets.Columns["EstadoCalculado"].DisplayIndex = indexResumen + 1;
+                int idx = dataGridViewTickets.Columns["Resumen"].DisplayIndex;
+                dataGridViewTickets.Columns["EstadoCalculado"].DisplayIndex = idx + 1;
             }
         }
+
 
         private void dataGridViewTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

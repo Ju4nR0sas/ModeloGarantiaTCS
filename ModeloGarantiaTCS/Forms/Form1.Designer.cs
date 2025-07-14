@@ -99,7 +99,7 @@
             // btnAnterior
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnterior.Location = new System.Drawing.Point(663, 415);
+            this.btnAnterior.Location = new System.Drawing.Point(597, 415);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(24, 23);
             this.btnAnterior.TabIndex = 5;
@@ -122,7 +122,7 @@
             // 
             this.lblPagina.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(693, 420);
+            this.lblPagina.Location = new System.Drawing.Point(646, 420);
             this.lblPagina.Name = "lblPagina";
             this.lblPagina.Size = new System.Drawing.Size(52, 13);
             this.lblPagina.TabIndex = 7;
