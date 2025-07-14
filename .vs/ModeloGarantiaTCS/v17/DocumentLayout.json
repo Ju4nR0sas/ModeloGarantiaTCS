@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|c:\\users\\velag\\source\\repos\\modelogarantiatcs\\modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\modelogarantiatcs\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Forms\\Form1.cs",
               "ToolTip": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeToolTip": "ModeloGarantiaTCS\\Forms\\Form1.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAswLQAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAiwL8AAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:19:16.473Z",
               "IsPinned": true,
@@ -56,7 +56,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Forms\\Form1.cs",
@@ -64,8 +64,7 @@
               "RelativeToolTip": "ModeloGarantiaTCS\\Forms\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T20:32:19.289Z",
-              "IsPinned": true,
-              "EditorCaption": " [Dise\u00F1o]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -78,18 +77,17 @@
               "ViewState": "AgIAADwAAAAAAAAAAAAiwGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:13:03.325Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "CsvService.cs",
               "DocumentMoniker": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\CsvService.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Services\\CsvService.cs",
               "ToolTip": "C:\\Users\\velag\\source\\repos\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\CsvService.cs",
               "RelativeToolTip": "ModeloGarantiaTCS\\Services\\CsvService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAADwv0cAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwCMAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:13:13.698Z",
               "IsPinned": true,
@@ -105,8 +103,7 @@
               "RelativeToolTip": "ModeloGarantiaTCS\\Services\\PaginacionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T23:47:08.474Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T23:47:08.474Z"
             },
             {
               "$type": "Document",
