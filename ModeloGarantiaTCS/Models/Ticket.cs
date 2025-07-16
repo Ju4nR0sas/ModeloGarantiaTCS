@@ -15,6 +15,7 @@ namespace ModeloGarantiaTCS.Models
 
         // Fechas calculadas
         public DateTime? FechaTentativaPasoProduccion { get; set; }
+        public DateTime? FechaRealPasoProduccion { get; set; }
         public DateTime? FechaTentativaEstabilizacion { get; set; }
         public DateTime? FechaTentativaGarantia { get; set; }
 

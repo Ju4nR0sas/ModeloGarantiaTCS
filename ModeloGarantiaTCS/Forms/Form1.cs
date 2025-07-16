@@ -197,35 +197,18 @@ namespace ModeloGarantiaTCS
             dataGridViewTickets.AllowUserToAddRows = false;
             dataGridViewTickets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Ocultar la columna “Complejidad”
-            if (dataGridViewTickets.Columns["Complejidad"] != null)
-                dataGridViewTickets.Columns["Complejidad"].Visible = false;
-
             // Ocultar la columna "En flujo"
             if (dataGridViewTickets.Columns["Flujo"] != null)
                 dataGridViewTickets.Columns["Flujo"].Visible = false;
 
-            // Formato de fechas …
-            if (dataGridViewTickets.Columns["FechaCertificacion"] != null)
-                dataGridViewTickets.Columns["FechaCertificacion"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            if (dataGridViewTickets.Columns["FechaTentativaPasoProduccion"] != null)
-                dataGridViewTickets.Columns["FechaTentativaPasoProduccion"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            if (dataGridViewTickets.Columns["FechaTentativaEstabilizacion"] != null)
-                dataGridViewTickets.Columns["FechaTentativaEstabilizacion"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            if (dataGridViewTickets.Columns["FechaTentativaGarantia"] != null)
-                dataGridViewTickets.Columns["FechaTentativaGarantia"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
+            // Ajuste de decimales
             if (dataGridViewTickets.Columns["EsfuerzoTotal"] != null)
-                dataGridViewTickets.Columns["EsfuerzoTotal"].DefaultCellStyle.Format = "N1"; // 2 decimales
-
+                dataGridViewTickets.Columns["EsfuerzoTotal"].DefaultCellStyle.Format = "N2";
 
             // Filas alternas
             dataGridViewTickets.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
-            // Color para filas con paso a producción vencido …
+            // Color para filas con paso a producción vencido
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
             {
                 if (row.Cells["FechaTentativaPasoProduccion"].Value != null &&

@@ -7,26 +7,27 @@ using ModeloGarantiaTCS.Models;
 
 namespace ModeloGarantiaTCS.Utils
 {
-    /// <summary>
-    /// Calcula fechas tentativas y estado de un ticket
-    /// a partir de su fecha de certificación y horas de trabajo.
-    /// No depende de la propiedad textual "Complejidad".
-    /// </summary>
     public static class CalculadoraFechas
     {
-        /// <summary>Aplica reglas de negocio sobre el ticket recibido.</summary>
+        private static readonly DateTime fechaActual = DateTime.Now;
+
         public static void Procesar(Ticket t)
         {
             if (!t.FechaCertificacion.HasValue)
             {
-                t.EstadoCalculado = "Sin certificación";
+                t.EstadoCalculado = "Aún sin fecha de certificación";
                 return;
             }
 
             /*-------------------------------------------------
-             * Paso 1 · Fechas base
+             * Paso 1 · Fechas base + Validación si tiene fecha de paso a producción
              *------------------------------------------------*/
-            t.FechaTentativaPasoProduccion = t.FechaCertificacion.Value.AddMonths(2);
+            Console.WriteLine(t.FechaRealPasoProduccion);
+            if (t.FechaRealPasoProduccion.HasValue)
+            {
+                t.FechaRealPasoProduccion = t.FechaRealPasoProduccion.Value.Date;
+            } else 
+                t.FechaTentativaPasoProduccion = t.FechaCertificacion.Value.AddMonths(2);
 
             /*-------------------------------------------------
              * Paso 2 · Días hábiles de estabilización
@@ -38,27 +39,42 @@ namespace ModeloGarantiaTCS.Utils
                                    : t.EsfuerzoTotal <= 200 ? 10
                                    : 15;
 
-            t.FechaTentativaEstabilizacion =
+            if(t.FechaTentativaPasoProduccion == null)
+            {
+                t.FechaTentativaEstabilizacion =
+                SumarDiasHabiles(t.FechaRealPasoProduccion.Value, diasEstabilizacion);
+            } else
+                t.FechaTentativaEstabilizacion =
                 SumarDiasHabiles(t.FechaTentativaPasoProduccion.Value, diasEstabilizacion);
+
 
             /*-------------------------------------------------
              * Paso 3 · Semanas de garantía
              * –  ≤100 h  → 5 sem
              * – ≤200 h  → 8 sem
              * –  >200 h  → 16 sem
+             * Si la fecha de certificación es superior a la fecha actual y no se encuentra en estado Certificado o no existe
+             * fecha de paso a producción esta garantía se deberá aplicar
              *------------------------------------------------*/
             int semanasGarantia = t.EsfuerzoTotal <= 100 ? 5
-                                : t.EsfuerzoTotal <= 200 ? 8
-                                : 16;
-
-            t.FechaTentativaGarantia = t.FechaTentativaEstabilizacion?.AddDays(semanasGarantia * 7);
+                                    : t.EsfuerzoTotal <= 200 ? 8
+                                    : 16;
+            Console.Write(fechaActual);
+            if (t.FechaCertificacion < fechaActual && t.FechaRealPasoProduccion.HasValue == false)
+            {
+                t.FechaTentativaGarantia = t.FechaCertificacion?.AddDays(semanasGarantia * 7);
+            }
+            else
+            {
+                t.FechaTentativaGarantia = t.FechaTentativaEstabilizacion?.AddDays(semanasGarantia * 7);
+            }
 
             /*-------------------------------------------------
-             * Paso 4 · Estado calculado
+             * Paso 4 · Estado calculado - Se agregan comentarios para colocarlos en JIRA
              *------------------------------------------------*/
             t.EstadoCalculado = DateTime.Today > t.FechaTentativaPasoProduccion
-                ? "En garantía directa (no pasó a producción a tiempo)"
-                : "En certificación / esperando producción";
+                ? "Tiempo de certificación superado se pasa a garantía"
+                : "En proceso de certificación / esperando paso a producción";
 
             if (!t.FechaCertificacion.HasValue)
             {
@@ -72,12 +88,9 @@ namespace ModeloGarantiaTCS.Utils
                       : EstadoFlujo.EnCertificacion;
 
             t.EstadoCalculado = t.Flujo == EstadoFlujo.Cerrado
-                ? "En garantía directa (no pasó a producción a tiempo)"
-                : "En certificación / esperando producción";
-
+                ? "Tiempo de certificación superado se pasa a garantía"
+                : "En proceso de certificación / esperando paso a producción";
         }
-
-
 
         /*-----------------------------------------------------
          *  Utilidades privadas

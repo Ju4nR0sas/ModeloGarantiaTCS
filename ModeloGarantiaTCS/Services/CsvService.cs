@@ -57,7 +57,10 @@ namespace ModeloGarantiaTCS.Services
                         FechaCertificacion = LeerFecha(fila,
                             "Campo personalizado (Fecha Vencimiento Certificacion)",
                             "Fecha de certificación",
-                            "Fecha Certificación")
+                            "Fecha Certificación"),
+                        
+                        FechaRealPasoProduccion = LeerFecha(fila,
+                            "Campo personalizado (Fecha Vencimiento Paso a Produccion)"),
                     };
 
                     CalculadoraFechas.Procesar(ticket);
@@ -116,8 +119,7 @@ namespace ModeloGarantiaTCS.Services
                     string valor = fila[clave]?.ToString()?.Trim();
                     if (string.IsNullOrWhiteSpace(valor)) continue;
 
-                    // Reemplaza separadores y prueba parseo
-                    valor = valor.Replace(",", "."); // uniformiza el separador decimal
+                    valor = valor.Replace(",", ".");
 
                     if (double.TryParse(valor, NumberStyles.Any, CultureInfo.InvariantCulture, out double resultado))
                         return resultado;
