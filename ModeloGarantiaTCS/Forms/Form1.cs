@@ -15,8 +15,9 @@ namespace ModeloGarantiaTCS
         private CsvService _csvService = new CsvService();
         private int _paginaActual = 1;
         private int _registrosPorPagina;
-        private PaginacionService<Ticket> _paginador;
+        private PaginacionService<Ticket> _paginador = new PaginacionService<Ticket>(new List<Ticket>(), 10);
         private bool _filtroActivo = false;
+        private static readonly DateTime fechaActual = DateTime.Now;
 
         /// <summary>
         /// Devuelve true si existe al menos un ticket cargado; de lo contrario
@@ -80,6 +81,58 @@ namespace ModeloGarantiaTCS
         private void btnFilter_Click(object sender, EventArgs e)
         {
             btnFilter.AutoSize = true;
+
+            contextMenuStrip1.Show(btnFilter, new Point(0, btnFilter.Height));
+
+            contextMenuStrip1.Items[0].Click += (s, EventArgs) => SinCertificacion();
+            contextMenuStrip1.Items[1].Click += (s, EventArgs) => EnGarantia();
+            ((ToolStripMenuItem)contextMenuStrip1.Items[2]).DropDownItems[0].Click += (s, EventArgs) => ConCertificacion();
+
+
+
+
+
+        }
+
+        //Certificación Vencida
+        private void EnGarantia()
+        {
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.FechaCertificacion < fechaActual && t.FechaRealPasoProduccion.HasValue == false)
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: cerrados");
+        }
+        //Fechas > Fechas Tentativas
+        public void ConCertificacion()
+        {
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.FechaTentativaPasoProduccion.HasValue)
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: certificación");
+        }
+
+        //Sin Certificación
+        public void SinCertificacion()
+        {
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.FechaCertificacion == null)
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: Sin Certificación");
         }
 
         private void MostrarTickets()
@@ -269,33 +322,6 @@ namespace ModeloGarantiaTCS
             _filtroActivo = false;
             btnAnterior.Enabled = true;
             btnSiguiente.Enabled = true;
-        }
-
-
-        private void btnSoloCertificacion_Click(object sender, EventArgs e)
-        {
-            if (!HayTicketsCargados()) return;
-
-            var filtrados = _tickets
-                .Where(t => t.Flujo == EstadoFlujo.EnCertificacion)
-                .ToList();
-
-            dataGridViewTickets.DataSource = filtrados;
-            AplicarEstiloGrid();
-            ActivarFiltroVista("Filtrado: certificación");
-        }
-
-        private void btnSoloCerrados_Click(object sender, EventArgs e)
-        {
-            if (!HayTicketsCargados()) return;
-
-            var filtrados = _tickets
-                .Where(t => t.Flujo == EstadoFlujo.Cerrado)
-                .ToList();
-
-            dataGridViewTickets.DataSource = filtrados;
-            AplicarEstiloGrid();
-            ActivarFiltroVista("Filtrado: cerrados"); ;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCargarCsv = new System.Windows.Forms.Button();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.btnExportarCsv = new System.Windows.Forms.Button();
@@ -37,17 +38,22 @@
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPagina = new System.Windows.Forms.Label();
             this.btnBorrarFiltro = new System.Windows.Forms.Button();
-            this.btnSoloCertificacion = new System.Windows.Forms.Button();
-            this.btnSoloCerrados = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sinCertificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.certificaciónVencidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechasTentativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechasTentativasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechasRealesActualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCargarCsv
             // 
             this.btnCargarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCargarCsv.Location = new System.Drawing.Point(16, 511);
-            this.btnCargarCsv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCargarCsv.Margin = new System.Windows.Forms.Padding(4);
             this.btnCargarCsv.Name = "btnCargarCsv";
             this.btnCargarCsv.Size = new System.Drawing.Size(172, 28);
             this.btnCargarCsv.TabIndex = 0;
@@ -63,7 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTickets.Location = new System.Drawing.Point(16, 50);
-            this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.RowHeadersWidth = 51;
             this.dataGridViewTickets.Size = new System.Drawing.Size(1035, 453);
@@ -74,7 +80,7 @@
             // 
             this.btnExportarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportarCsv.Location = new System.Drawing.Point(196, 511);
-            this.btnExportarCsv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportarCsv.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportarCsv.Name = "btnExportarCsv";
             this.btnExportarCsv.Size = new System.Drawing.Size(188, 28);
             this.btnExportarCsv.TabIndex = 2;
@@ -87,7 +93,7 @@
             this.txtFiltroClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltroClave.Location = new System.Drawing.Point(411, 15);
-            this.txtFiltroClave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFiltroClave.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroClave.Name = "txtFiltroClave";
             this.txtFiltroClave.Size = new System.Drawing.Size(360, 22);
             this.txtFiltroClave.TabIndex = 3;
@@ -97,7 +103,7 @@
             // 
             this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFiltrar.Location = new System.Drawing.Point(779, 12);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(107, 28);
             this.btnFiltrar.TabIndex = 4;
@@ -109,7 +115,7 @@
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnterior.Location = new System.Drawing.Point(796, 511);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(32, 28);
             this.btnAnterior.TabIndex = 5;
@@ -121,7 +127,7 @@
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSiguiente.Location = new System.Drawing.Point(1001, 511);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(32, 28);
             this.btnSiguiente.TabIndex = 6;
@@ -145,35 +151,13 @@
             // 
             this.btnBorrarFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBorrarFiltro.Location = new System.Drawing.Point(894, 11);
-            this.btnBorrarFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrarFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrarFiltro.Name = "btnBorrarFiltro";
             this.btnBorrarFiltro.Size = new System.Drawing.Size(100, 28);
             this.btnBorrarFiltro.TabIndex = 8;
             this.btnBorrarFiltro.Text = "Limpiar";
             this.btnBorrarFiltro.UseVisualStyleBackColor = true;
             this.btnBorrarFiltro.Click += new System.EventHandler(this.btnBorrarFiltro_Click);
-            // 
-            // btnSoloCertificacion
-            // 
-            this.btnSoloCertificacion.Location = new System.Drawing.Point(21, 11);
-            this.btnSoloCertificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSoloCertificacion.Name = "btnSoloCertificacion";
-            this.btnSoloCertificacion.Size = new System.Drawing.Size(167, 28);
-            this.btnSoloCertificacion.TabIndex = 9;
-            this.btnSoloCertificacion.Text = "Con Certificacion";
-            this.btnSoloCertificacion.UseVisualStyleBackColor = true;
-            this.btnSoloCertificacion.Click += new System.EventHandler(this.btnSoloCertificacion_Click);
-            // 
-            // btnSoloCerrados
-            // 
-            this.btnSoloCerrados.Location = new System.Drawing.Point(196, 12);
-            this.btnSoloCerrados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSoloCerrados.Name = "btnSoloCerrados";
-            this.btnSoloCerrados.Size = new System.Drawing.Size(188, 28);
-            this.btnSoloCerrados.TabIndex = 10;
-            this.btnSoloCerrados.Text = "En Garantia";
-            this.btnSoloCerrados.UseVisualStyleBackColor = true;
-            this.btnSoloCerrados.Click += new System.EventHandler(this.btnSoloCerrados_Click);
             // 
             // btnFilter
             // 
@@ -185,14 +169,55 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sinCertificaciónToolStripMenuItem,
+            this.certificaciónVencidaToolStripMenuItem,
+            this.fechasTentativasToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 76);
+            // 
+            // sinCertificaciónToolStripMenuItem
+            // 
+            this.sinCertificaciónToolStripMenuItem.Name = "sinCertificaciónToolStripMenuItem";
+            this.sinCertificaciónToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.sinCertificaciónToolStripMenuItem.Text = "Aún sin Certificación";
+            // 
+            // certificaciónVencidaToolStripMenuItem
+            // 
+            this.certificaciónVencidaToolStripMenuItem.Name = "certificaciónVencidaToolStripMenuItem";
+            this.certificaciónVencidaToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.certificaciónVencidaToolStripMenuItem.Text = "Certificación Vencida (Garantía)";
+            // 
+            // fechasTentativasToolStripMenuItem
+            // 
+            this.fechasTentativasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fechasTentativasToolStripMenuItem1,
+            this.fechasRealesActualesToolStripMenuItem});
+            this.fechasTentativasToolStripMenuItem.Name = "fechasTentativasToolStripMenuItem";
+            this.fechasTentativasToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.fechasTentativasToolStripMenuItem.Text = "Fechas";
+            // 
+            // fechasTentativasToolStripMenuItem1
+            // 
+            this.fechasTentativasToolStripMenuItem1.Name = "fechasTentativasToolStripMenuItem1";
+            this.fechasTentativasToolStripMenuItem1.Size = new System.Drawing.Size(253, 26);
+            this.fechasTentativasToolStripMenuItem1.Text = "Fechas Tentativas";
+            // 
+            // fechasRealesActualesToolStripMenuItem
+            // 
+            this.fechasRealesActualesToolStripMenuItem.Name = "fechasRealesActualesToolStripMenuItem";
+            this.fechasRealesActualesToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
+            this.fechasRealesActualesToolStripMenuItem.Text = "Fechas Reales (Actuales)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.btnSoloCerrados);
-            this.Controls.Add(this.btnSoloCertificacion);
             this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.lblPagina);
             this.Controls.Add(this.btnSiguiente);
@@ -202,11 +227,12 @@
             this.Controls.Add(this.btnExportarCsv);
             this.Controls.Add(this.dataGridViewTickets);
             this.Controls.Add(this.btnCargarCsv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Calculo para Garantia";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,9 +249,13 @@
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Label lblPagina;
         private System.Windows.Forms.Button btnBorrarFiltro;
-        private System.Windows.Forms.Button btnSoloCertificacion;
-        private System.Windows.Forms.Button btnSoloCerrados;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sinCertificaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem certificaciónVencidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fechasRealesActualesToolStripMenuItem;
     }
 }
 
