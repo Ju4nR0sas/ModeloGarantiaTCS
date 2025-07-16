@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|c:\\programacion\\entregable\\modelogarantiatcs\\modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\utils\\calculadorafechas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +27,12 @@
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\services\\paginacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\models\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\models\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|C:\\Programacion\\entregable\\ModeloGarantiaTCS\\modelogarantiatcs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3586CC26-C58C-4061-A0D3-8D404520DDA4}|ModeloGarantiaTCS\\ModeloGarantiaTCS.csproj|solutionrelative:modelogarantiatcs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,25 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Ticket.cs",
-              "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Models\\Ticket.cs",
-              "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Models\\Ticket.cs",
-              "ToolTip": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Models\\Ticket.cs",
-              "RelativeToolTip": "ModeloGarantiaTCS\\Models\\Ticket.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAEwAwAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T19:13:03.325Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Forms\\Form1.cs",
@@ -72,33 +58,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Forms\\Form1.cs",
               "ToolTip": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Forms\\Form1.cs",
               "RelativeToolTip": "ModeloGarantiaTCS\\Forms\\Form1.cs",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAuwNcAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAACIBAAAAAAAAAAAqwCsBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:19:16.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "Ticket.cs",
+              "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Models\\Ticket.cs",
+              "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Models\\Ticket.cs",
+              "ToolTip": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Models\\Ticket.cs",
+              "RelativeToolTip": "ModeloGarantiaTCS\\Models\\Ticket.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAEwAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T19:13:03.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "CsvService.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\CsvService.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Services\\CsvService.cs",
               "ToolTip": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\CsvService.cs",
               "RelativeToolTip": "ModeloGarantiaTCS\\Services\\CsvService.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwD4AAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-14T14:22:31.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Enum.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Models\\Enum.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Models\\Enum.cs",
@@ -106,25 +105,24 @@
               "RelativeToolTip": "ModeloGarantiaTCS\\Models\\Enum.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T00:19:56.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-14T00:19:56.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PaginacionService.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\PaginacionService.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Services\\PaginacionService.cs",
               "ToolTip": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Services\\PaginacionService.cs",
               "RelativeToolTip": "ModeloGarantiaTCS\\Services\\PaginacionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwA0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-13T23:47:08.474Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "CalculadoraFechas.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Utils\\CalculadoraFechas.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Utils\\CalculadoraFechas.cs",
@@ -137,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Programacion\\entregable\\ModeloGarantiaTCS\\ModeloGarantiaTCS\\Program.cs",
               "RelativeDocumentMoniker": "ModeloGarantiaTCS\\Program.cs",

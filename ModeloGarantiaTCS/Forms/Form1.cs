@@ -67,6 +67,19 @@ namespace ModeloGarantiaTCS
 
             // Conectar KeyPress para validar números
             txtFiltroClave.KeyPress += txtFiltroClave_KeyPress;
+            this.Load += Form1_Load;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btnFilter.Image = Image.FromFile("C:/Programacion/entregable/ModeloGarantiaTCS/ModeloGarantiaTCS/Resources/sort.png");
+            btnFilter.ImageAlign = ContentAlignment.MiddleCenter;
+            btnFilter.TextImageRelation = TextImageRelation.ImageBeforeText;
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            btnFilter.AutoSize = true;
         }
 
         private void MostrarTickets()
@@ -239,11 +252,6 @@ namespace ModeloGarantiaTCS
 
         private void lblPagina_Click(object sender, EventArgs e)
         {
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         /// Deshabilita paginación y marca la vista como filtrada.
