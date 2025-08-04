@@ -10,8 +10,8 @@ namespace ModeloGarantiaTCS.Models
         public string Tipo { get; set; }
         public double EsfuerzoTotal { get; set; }
         public DateTime? FechaCertificacion { get; set; }
-        public EstadoFlujo Flujo { get; set; }
-
+        public EstadoFlujo Flujo { get; set; }        
+        public string Estado { get; set; }
 
         // Fechas calculadas
         public DateTime? FechaTentativaPasoProduccion { get; set; }

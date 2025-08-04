@@ -1,4 +1,6 @@
-﻿namespace ModeloGarantiaTCS
+﻿using System.Windows.Forms;
+
+namespace ModeloGarantiaTCS
 {
     partial class Form1
     {
@@ -45,6 +47,7 @@
             this.fechasTentativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fechasTentativasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fechasRealesActualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +110,7 @@
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(107, 28);
             this.btnFiltrar.TabIndex = 4;
-            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
@@ -174,10 +177,11 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sinCertificaciónToolStripMenuItem,
+            this.cerradosToolStripMenuItem,
             this.certificaciónVencidaToolStripMenuItem,
             this.fechasTentativasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 100);
             // 
             // sinCertificaciónToolStripMenuItem
             // 
@@ -211,6 +215,12 @@
             this.fechasRealesActualesToolStripMenuItem.Name = "fechasRealesActualesToolStripMenuItem";
             this.fechasRealesActualesToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
             this.fechasRealesActualesToolStripMenuItem.Text = "Fechas Reales (Actuales)";
+            // 
+            // cerradosToolStripMenuItem
+            // 
+            this.cerradosToolStripMenuItem.Name = "cerradosToolStripMenuItem";
+            this.cerradosToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.cerradosToolStripMenuItem.Text = "Cerrados";
             // 
             // Form1
             // 
@@ -256,6 +266,7 @@
         private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem fechasRealesActualesToolStripMenuItem;
+        private ToolStripMenuItem cerradosToolStripMenuItem;
     }
 }
 

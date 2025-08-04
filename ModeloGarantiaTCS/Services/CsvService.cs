@@ -50,14 +50,13 @@ namespace ModeloGarantiaTCS.Services
 
                     var ticket = new Ticket
                     {
+                        Estado = LeerTexto(fila, "Estado"),
                         Clave = LeerTexto(fila, "Clave de incidencia"),
                         Resumen = LeerTexto(fila, "Resumen"),
                         Tipo = tipo,
                         EsfuerzoTotal = horas,
                         FechaCertificacion = LeerFecha(fila,
-                            "Campo personalizado (Fecha Vencimiento Certificacion)",
-                            "Fecha de certificación",
-                            "Fecha Certificación"),
+                            "Campo personalizado (Fecha Vencimiento Certificacion)"),
                         
                         FechaRealPasoProduccion = LeerFecha(fila,
                             "Campo personalizado (Fecha Vencimiento Paso a Produccion)"),

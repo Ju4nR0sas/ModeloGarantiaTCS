@@ -13,16 +13,18 @@ namespace ModeloGarantiaTCS.Utils
 
         public static void Procesar(Ticket t)
         {
+            /*-------------------------------------------------
+             * Inicio· Validar si exista fecha de certificación
+             *------------------------------------------------*/
             if (!t.FechaCertificacion.HasValue)
             {
                 t.EstadoCalculado = "Aún sin fecha de certificación";
                 return;
-            }
+            }          
 
             /*-------------------------------------------------
              * Paso 1 · Fechas base + Validación si tiene fecha de paso a producción
              *------------------------------------------------*/
-            Console.WriteLine(t.FechaRealPasoProduccion);
             if (t.FechaRealPasoProduccion.HasValue)
             {
                 t.FechaRealPasoProduccion = t.FechaRealPasoProduccion.Value.Date;
