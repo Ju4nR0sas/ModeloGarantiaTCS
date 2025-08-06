@@ -43,11 +43,9 @@ namespace ModeloGarantiaTCS
             this.btnFilter = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sinCertificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificaciónVencidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fechasTentativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fechasTentativasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fechasRealesActualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -181,13 +179,19 @@ namespace ModeloGarantiaTCS
             this.certificaciónVencidaToolStripMenuItem,
             this.fechasTentativasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 100);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 128);
             // 
             // sinCertificaciónToolStripMenuItem
             // 
             this.sinCertificaciónToolStripMenuItem.Name = "sinCertificaciónToolStripMenuItem";
             this.sinCertificaciónToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.sinCertificaciónToolStripMenuItem.Text = "Aún sin Certificación";
+            // 
+            // cerradosToolStripMenuItem
+            // 
+            this.cerradosToolStripMenuItem.Name = "cerradosToolStripMenuItem";
+            this.cerradosToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.cerradosToolStripMenuItem.Text = "Cerrados";
             // 
             // certificaciónVencidaToolStripMenuItem
             // 
@@ -197,30 +201,9 @@ namespace ModeloGarantiaTCS
             // 
             // fechasTentativasToolStripMenuItem
             // 
-            this.fechasTentativasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fechasTentativasToolStripMenuItem1,
-            this.fechasRealesActualesToolStripMenuItem});
             this.fechasTentativasToolStripMenuItem.Name = "fechasTentativasToolStripMenuItem";
             this.fechasTentativasToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
-            this.fechasTentativasToolStripMenuItem.Text = "Fechas";
-            // 
-            // fechasTentativasToolStripMenuItem1
-            // 
-            this.fechasTentativasToolStripMenuItem1.Name = "fechasTentativasToolStripMenuItem1";
-            this.fechasTentativasToolStripMenuItem1.Size = new System.Drawing.Size(253, 26);
-            this.fechasTentativasToolStripMenuItem1.Text = "Fechas Tentativas";
-            // 
-            // fechasRealesActualesToolStripMenuItem
-            // 
-            this.fechasRealesActualesToolStripMenuItem.Name = "fechasRealesActualesToolStripMenuItem";
-            this.fechasRealesActualesToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
-            this.fechasRealesActualesToolStripMenuItem.Text = "Fechas Reales (Actuales)";
-            // 
-            // cerradosToolStripMenuItem
-            // 
-            this.cerradosToolStripMenuItem.Name = "cerradosToolStripMenuItem";
-            this.cerradosToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
-            this.cerradosToolStripMenuItem.Text = "Cerrados";
+            this.fechasTentativasToolStripMenuItem.Text = "Fechas Tentativas";
             // 
             // Form1
             // 
@@ -264,8 +247,6 @@ namespace ModeloGarantiaTCS
         private System.Windows.Forms.ToolStripMenuItem sinCertificaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem certificaciónVencidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem fechasRealesActualesToolStripMenuItem;
         private ToolStripMenuItem cerradosToolStripMenuItem;
     }
 }

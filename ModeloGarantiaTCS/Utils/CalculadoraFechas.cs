@@ -61,7 +61,6 @@ namespace ModeloGarantiaTCS.Utils
             int semanasGarantia = t.EsfuerzoTotal <= 100 ? 5
                                     : t.EsfuerzoTotal <= 200 ? 8
                                     : 16;
-            Console.Write(fechaActual);
             if (t.FechaCertificacion < fechaActual && t.FechaRealPasoProduccion.HasValue == false)
             {
                 t.FechaTentativaGarantia = t.FechaCertificacion?.AddDays(semanasGarantia * 7);

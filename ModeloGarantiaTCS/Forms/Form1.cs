@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace ModeloGarantiaTCS
 {
-    
+
     public partial class Form1 : Form
     {
         private List<Ticket> _tickets = new List<Ticket>();
@@ -19,15 +20,13 @@ namespace ModeloGarantiaTCS
         private PaginacionService<Ticket> _paginador = new PaginacionService<Ticket>(new List<Ticket>(), 10);
         private bool _filtroActivo = false;
         private static readonly DateTime fechaActual = DateTime.Now;
+        private bool ocultarPasoProduccionEnProximoBinding = false;
         public Form1()
         {
             InitializeComponent();
 
             // Se agrega un evento al botón de filtro
             contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(ContexMenu_ItemClicked);
-            //Submenú
-            fechasTentativasToolStripMenuItem1.Click += (s, e) => FechasTentativas();
-            fechasRealesActualesToolStripMenuItem.Click += (s, e) => FechasActuales();
 
             // Configura DataGridView como solo lectura
             dataGridViewTickets.ReadOnly = true;
@@ -64,6 +63,8 @@ namespace ModeloGarantiaTCS
          * de lo contrario muestra un mensaje y devuelve false.*/
         private bool HayTicketsCargados()
         {
+            dataGridViewTickets.DataBindingComplete += dataGridViewTickets_DataBindingComplete;
+
             if (_tickets == null || _tickets.Count == 0)
             {
                 MessageBox.Show(
@@ -75,13 +76,31 @@ namespace ModeloGarantiaTCS
             }
             return true;
         }
-
+        // Se define una ruta absoluta
         private void Form1_Load(object sender, EventArgs e)
         {
-            btnFilter.Image = Image.FromFile("C:/Programacion/entregable/ModeloGarantiaTCS/ModeloGarantiaTCS/Resources/sort.png");
-            btnFilter.ImageAlign = ContentAlignment.MiddleCenter;
-            btnFilter.TextImageRelation = TextImageRelation.ImageBeforeText;
+            try
+            {
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string imagePath = Path.Combine(basePath, "Resources", "sort.png");
+
+                if (File.Exists(imagePath))
+                {
+                    btnFilter.Image = Image.FromFile(imagePath);
+                    btnFilter.ImageAlign = ContentAlignment.MiddleCenter;
+                    btnFilter.TextImageRelation = TextImageRelation.ImageBeforeText;
+                }
+                else
+                {
+                    MessageBox.Show($"No se encontró la imagen: {imagePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error cargando la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         #region Eventos de Filtro
         private void btnFilter_Click(object sender, EventArgs e)
@@ -104,6 +123,9 @@ namespace ModeloGarantiaTCS
                     break;
                 case "cerradosToolStripMenuItem":
                     EstadoCerrado();
+                    break;
+                case "fechasTentativasToolStripMenuItem":
+                    FechasTentativas();
                     break;
                 default:
                     break;
@@ -133,16 +155,17 @@ namespace ModeloGarantiaTCS
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
-                .Where(t => t.FechaCertificacion < fechaActual && 
-                !t.FechaRealPasoProduccion.HasValue && 
+                .Where(t => t.FechaCertificacion < fechaActual &&
+                !t.FechaRealPasoProduccion.HasValue &&
                 t.FechaTentativaPasoProduccion < fechaActual)
                 .ToList();
 
+            
             dataGridViewTickets.DataSource = filtrados;
-            // --NO FUNCIONA-- SE APLICA GLOBALMENTE
-            //OcultarPasoProduccion();
+
             AplicarEstiloGrid();
             ActivarFiltroVista("Filtrado: En Garantía");
+            OcultarPasoProduccion();
         }
 
         //Estado Cerrado
@@ -179,11 +202,10 @@ namespace ModeloGarantiaTCS
                 .Where(t => t.FechaCertificacion > fechaActual && t.FechaTentativaPasoProduccion.HasValue)
                 .ToList();
 
-
-
             dataGridViewTickets.DataSource = filtrados;
             AplicarEstiloGrid();
             ActivarFiltroVista("Filtrado: Tentativas");
+            OcultarPasoProduccion();
         }
 
         //Fechas actuales
@@ -213,7 +235,7 @@ namespace ModeloGarantiaTCS
             // Validar que solo haya números
             if (!clave.All(char.IsDigit))
             {
-                MessageBox.Show("Por favor ingrese solo números en el filtro de clave.", 
+                MessageBox.Show("Por favor ingrese solo números en el filtro de clave.",
                     "Filtro inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -224,7 +246,7 @@ namespace ModeloGarantiaTCS
 
             if (filtrados.Count == 0)
             {
-                MessageBox.Show("No se encontraron registros con ese filtro.", 
+                MessageBox.Show("No se encontraron registros con ese filtro.",
                     "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -347,11 +369,22 @@ namespace ModeloGarantiaTCS
 
         #region Eventos de DataGridView
 
-        //public void OcultarPasoProduccion()
-        //{
-        //    if (dataGridViewTickets.Columns["FechaRealPasoProduccion"] != null)
-        //        dataGridViewTickets.Columns["FechaRealPasoProduccion"].Visible = false;
-        //}
+        private void OcultarPasoProduccion()
+        {
+            if (dataGridViewTickets.Columns["FechaRealPasoProduccion"] != null)
+                dataGridViewTickets.Columns["FechaRealPasoProduccion"].Visible = false;
+        }
+
+        //DataBindingComplete es un evento del control DataGridView que se dispara cuando se completa el enlace de datos.
+        private void dataGridViewTickets_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (ocultarPasoProduccionEnProximoBinding)
+            {
+                OcultarPasoProduccion();
+                ocultarPasoProduccionEnProximoBinding = false; // Resetea para que no oculte siempre
+            }
+        }
+
         private void AplicarEstiloGrid()
         {
             dataGridViewTickets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -379,12 +412,12 @@ namespace ModeloGarantiaTCS
 
             // Color para filas con paso a producción vencido
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
-            {     
+            {
                 if (row.Cells["FechaTentativaPasoProduccion"].Value != null &&
                     DateTime.TryParse(row.Cells["FechaTentativaPasoProduccion"].Value.ToString(), out DateTime fechaProd) &&
                     fechaProd < DateTime.Today)
                 {
-                        row.DefaultCellStyle.BackColor = Color.LightCoral;
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
                 }
             }
 

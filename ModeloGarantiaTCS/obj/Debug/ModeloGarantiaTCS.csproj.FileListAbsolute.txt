@@ -53,3 +53,4 @@ C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloG
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGa.95B2C186.Up2Date
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.exe
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.pdb
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\bin\Debug\Resources\sort.png
