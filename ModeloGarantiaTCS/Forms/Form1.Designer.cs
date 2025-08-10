@@ -31,6 +31,7 @@ namespace ModeloGarantiaTCS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnCargarCsv = new System.Windows.Forms.Button();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.btnExportarCsv = new System.Windows.Forms.Button();
@@ -53,10 +54,10 @@ namespace ModeloGarantiaTCS
             // btnCargarCsv
             // 
             this.btnCargarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCargarCsv.Location = new System.Drawing.Point(16, 511);
-            this.btnCargarCsv.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCargarCsv.Location = new System.Drawing.Point(14, 543);
+            this.btnCargarCsv.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnCargarCsv.Name = "btnCargarCsv";
-            this.btnCargarCsv.Size = new System.Drawing.Size(172, 28);
+            this.btnCargarCsv.Size = new System.Drawing.Size(151, 29);
             this.btnCargarCsv.TabIndex = 0;
             this.btnCargarCsv.Tag = "";
             this.btnCargarCsv.Text = "Cargar CSV";
@@ -68,22 +69,23 @@ namespace ModeloGarantiaTCS
             this.dataGridViewTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewTickets.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTickets.Location = new System.Drawing.Point(16, 50);
-            this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewTickets.Location = new System.Drawing.Point(14, 53);
+            this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.RowHeadersWidth = 51;
-            this.dataGridViewTickets.Size = new System.Drawing.Size(1035, 453);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(964, 481);
             this.dataGridViewTickets.TabIndex = 1;
             this.dataGridViewTickets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_CellContentClick);
             // 
             // btnExportarCsv
             // 
             this.btnExportarCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportarCsv.Location = new System.Drawing.Point(196, 511);
-            this.btnExportarCsv.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExportarCsv.Location = new System.Drawing.Point(171, 543);
+            this.btnExportarCsv.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnExportarCsv.Name = "btnExportarCsv";
-            this.btnExportarCsv.Size = new System.Drawing.Size(188, 28);
+            this.btnExportarCsv.Size = new System.Drawing.Size(165, 29);
             this.btnExportarCsv.TabIndex = 2;
             this.btnExportarCsv.Text = "Exportar CSV";
             this.btnExportarCsv.UseVisualStyleBackColor = true;
@@ -93,20 +95,20 @@ namespace ModeloGarantiaTCS
             // 
             this.txtFiltroClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFiltroClave.Location = new System.Drawing.Point(411, 15);
-            this.txtFiltroClave.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFiltroClave.Location = new System.Drawing.Point(359, 16);
+            this.txtFiltroClave.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtFiltroClave.Name = "txtFiltroClave";
-            this.txtFiltroClave.Size = new System.Drawing.Size(360, 22);
+            this.txtFiltroClave.Size = new System.Drawing.Size(373, 25);
             this.txtFiltroClave.TabIndex = 3;
             this.txtFiltroClave.TextChanged += new System.EventHandler(this.txtFiltroClave_TextChanged);
             // 
             // btnFiltrar
             // 
             this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFiltrar.Location = new System.Drawing.Point(779, 12);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFiltrar.Location = new System.Drawing.Point(740, 12);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(107, 28);
+            this.btnFiltrar.Size = new System.Drawing.Size(93, 29);
             this.btnFiltrar.TabIndex = 4;
             this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
@@ -115,10 +117,10 @@ namespace ModeloGarantiaTCS
             // btnAnterior
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnterior.Location = new System.Drawing.Point(796, 511);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAnterior.Location = new System.Drawing.Point(754, 543);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(32, 28);
+            this.btnAnterior.Size = new System.Drawing.Size(28, 29);
             this.btnAnterior.TabIndex = 5;
             this.btnAnterior.Text = "<";
             this.btnAnterior.UseVisualStyleBackColor = true;
@@ -127,10 +129,10 @@ namespace ModeloGarantiaTCS
             // btnSiguiente
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSiguiente.Location = new System.Drawing.Point(1001, 511);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSiguiente.Location = new System.Drawing.Point(933, 543);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(32, 28);
+            this.btnSiguiente.Size = new System.Drawing.Size(28, 29);
             this.btnSiguiente.TabIndex = 6;
             this.btnSiguiente.Text = ">";
             this.btnSiguiente.UseVisualStyleBackColor = true;
@@ -140,10 +142,9 @@ namespace ModeloGarantiaTCS
             // 
             this.lblPagina.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(861, 517);
-            this.lblPagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPagina.Location = new System.Drawing.Point(811, 549);
             this.lblPagina.Name = "lblPagina";
-            this.lblPagina.Size = new System.Drawing.Size(63, 16);
+            this.lblPagina.Size = new System.Drawing.Size(59, 17);
             this.lblPagina.TabIndex = 7;
             this.lblPagina.Text = "Página: 1";
             this.lblPagina.Click += new System.EventHandler(this.lblPagina_Click);
@@ -151,10 +152,10 @@ namespace ModeloGarantiaTCS
             // btnBorrarFiltro
             // 
             this.btnBorrarFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBorrarFiltro.Location = new System.Drawing.Point(894, 11);
-            this.btnBorrarFiltro.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBorrarFiltro.Location = new System.Drawing.Point(840, 12);
+            this.btnBorrarFiltro.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnBorrarFiltro.Name = "btnBorrarFiltro";
-            this.btnBorrarFiltro.Size = new System.Drawing.Size(100, 28);
+            this.btnBorrarFiltro.Size = new System.Drawing.Size(87, 29);
             this.btnBorrarFiltro.TabIndex = 8;
             this.btnBorrarFiltro.Text = "Limpiar";
             this.btnBorrarFiltro.UseVisualStyleBackColor = true;
@@ -163,9 +164,10 @@ namespace ModeloGarantiaTCS
             // btnFilter
             // 
             this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFilter.Location = new System.Drawing.Point(1001, 11);
+            this.btnFilter.Location = new System.Drawing.Point(933, 12);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(50, 28);
+            this.btnFilter.Size = new System.Drawing.Size(44, 29);
             this.btnFilter.TabIndex = 11;
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -179,7 +181,7 @@ namespace ModeloGarantiaTCS
             this.certificaciónVencidaToolStripMenuItem,
             this.fechasTentativasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 128);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 100);
             // 
             // sinCertificaciónToolStripMenuItem
             // 
@@ -207,9 +209,9 @@ namespace ModeloGarantiaTCS
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(992, 589);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.lblPagina);
@@ -220,8 +222,12 @@ namespace ModeloGarantiaTCS
             this.Controls.Add(this.btnExportarCsv);
             this.Controls.Add(this.dataGridViewTickets);
             this.Controls.Add(this.btnCargarCsv);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.MinimumSize = new System.Drawing.Size(830, 636);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Calculo para Garantia";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();

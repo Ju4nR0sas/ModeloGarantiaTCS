@@ -54,3 +54,8 @@ C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloG
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.exe
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.pdb
 C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\bin\Debug\Resources\sort.png
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\bin\Debug\ModeloGarantiaTCS.exe.manifest
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\bin\Debug\ModeloGarantiaTCS.application
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.exe.manifest
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\obj\Debug\ModeloGarantiaTCS.application
+C:\Programacion\entregable\ModeloGarantiaTCS\ModeloGarantiaTCS\bin\Debug\Resources\Image.ico

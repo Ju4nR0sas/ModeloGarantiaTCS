@@ -21,6 +21,10 @@ namespace ModeloGarantiaTCS
         private bool _filtroActivo = false;
         private static readonly DateTime fechaActual = DateTime.Now;
         private bool ocultarPasoProduccionEnProximoBinding = false;
+
+        //PRUEBA
+        private const int WM_NCLBUTTONDOWN = 0x00A1;
+        private const int HTSYSMENU = 3;
         public Form1()
         {
             InitializeComponent();
@@ -57,7 +61,49 @@ namespace ModeloGarantiaTCS
             txtFiltroClave.KeyPress += txtFiltroClave_KeyPress;
             this.Load += Form1_Load;
         }
+        #region Prueba
+        //PRUEBA
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_NCLBUTTONDOWN && m.WParam.ToInt32() == HTSYSMENU)
+            {
+                // Mostrar ventana con el ícono grande
+                ShowIconWindow();
+            }
+            base.WndProc(ref m);
+        }
 
+        //PRUEBA
+        private void ShowIconWindow()
+        {
+            Form iconForm = new Form();
+            iconForm.Text = "Zzzzzzzzz";
+            iconForm.StartPosition = FormStartPosition.CenterParent;
+            iconForm.Size = new Size(500, 500);
+            iconForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            iconForm.MaximizeBox = false;
+            iconForm.MinimizeBox = false;
+
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Dock = DockStyle.Fill;
+
+            // Convertir el icono del formulario a imagen (Bitmap) con tamaño grande
+            Bitmap bmp = this.Icon.ToBitmap();
+
+            // Crear una imagen más grande a partir del icono
+            Bitmap bmpLarge = new Bitmap(bmp, 500, 500);
+
+            pictureBox.Image = bmpLarge;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            iconForm.Controls.Add(pictureBox);
+            iconForm.ShowDialog();
+
+            // Liberar recursos
+            bmp.Dispose();
+            bmpLarge.Dispose();
+        }
+        #endregion
 
         /* Devuelve true si existe al menos un ticket cargado
          * de lo contrario muestra un mensaje y devuelve false.*/
@@ -385,14 +431,39 @@ namespace ModeloGarantiaTCS
             }
         }
 
+        // Estilos
         private void AplicarEstiloGrid()
         {
+            //Modificación de Header
+            dataGridViewTickets.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(13, 27, 42);
+            dataGridViewTickets.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewTickets.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dataGridViewTickets.EnableHeadersVisualStyles = false;  // Necesario para que tome el color personalizado
+            dataGridViewTickets.ColumnHeadersHeight = 40;
+            dataGridViewTickets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+
+            //Tamaños
             dataGridViewTickets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewTickets.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewTickets.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridViewTickets.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            //Visibilidad
             dataGridViewTickets.RowHeadersVisible = false;
             dataGridViewTickets.AllowUserToAddRows = false;
+
+            //Selección
             dataGridViewTickets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //Colores y fuentes
+            dataGridViewTickets.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(144, 221, 240);
+            dataGridViewTickets.DefaultCellStyle.Font = new Font("Segoe UI Variable Text", 10);
+            dataGridViewTickets.DefaultCellStyle.ForeColor = Color.Black;
+
+            //Quitar selección al perder foco
+            dataGridViewTickets.ClearSelection();
+            dataGridViewTickets.CellLeave += (s, e) => dataGridViewTickets.ClearSelection();
+
 
             // Ocultar la columna "En flujo"
             if (dataGridViewTickets.Columns["Flujo"] != null)
@@ -413,11 +484,11 @@ namespace ModeloGarantiaTCS
             // Color para filas con paso a producción vencido
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
             {
-                if (row.Cells["FechaTentativaPasoProduccion"].Value != null &&
-                    DateTime.TryParse(row.Cells["FechaTentativaPasoProduccion"].Value.ToString(), out DateTime fechaProd) &&
+                if (row.Cells["FechaCertificacion"].Value != null &&
+                    DateTime.TryParse(row.Cells["FechaCertificacion"].Value.ToString(), out DateTime fechaProd) &&
                     fechaProd < DateTime.Today)
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                    row.DefaultCellStyle.BackColor = Color.FromArgb( 255, 171, 171);
                 }
             }
 
