@@ -29,14 +29,12 @@ namespace ModeloGarantiaTCS.Utils
             {
                 t.FechaRealPasoProduccion = t.FechaRealPasoProduccion.Value.Date;
             }
-            else {
+            else
+            {
                 int diaCertificacionInt = (int)t.FechaCertificacion.Value.Day;
-                t.FechaTentativaPasoProduccion = t.FechaCertificacion.Value.AddMonths(2).AddDays(diaCertificacionInt);
-
+                t.FechaTentativaPasoProduccion = t.FechaCertificacion.Value.AddMonths(2);
+                t.FechaTentativaPasoProduccion = AjustarAFechaHabil(t.FechaTentativaPasoProduccion.Value);
             }
-
-
-
             /*-------------------------------------------------
              * Paso 2 · Días hábiles de estabilización
              * –  ≤100 h  →  5 d/hábiles
@@ -80,29 +78,39 @@ namespace ModeloGarantiaTCS.Utils
             /*-------------------------------------------------
              * Paso 4 · Estado calculado - Se agregan comentarios para colocarlos en JIRA
              *------------------------------------------------*/
-            t.EstadoCalculado = DateTime.Today > t.FechaCertificacion && !t.FechaRealPasoProduccion.HasValue
-                ? "Tiempo de certificación superado se pasa a garantía"
-                : "En proceso de certificación / esperando paso a producción";
-
-            if (!t.FechaCertificacion.HasValue)
+            if (DateTime.Today > t.FechaTentativaGarantia)
             {
-                t.Flujo = EstadoFlujo.SinCertificacion;
-                t.EstadoCalculado = "Sin certificación";
-                return;
+                t.Flujo = EstadoFlujo.Cerrado;
+                t.EstadoCalculado = "Tiempo de garantía superado";
             }
-
-            t.Flujo = DateTime.Today > t.FechaCertificacion && !t.FechaRealPasoProduccion.HasValue
-                      ? EstadoFlujo.Cerrado
-                      : EstadoFlujo.EnCertificacion;
-
-            t.EstadoCalculado = t.Flujo == EstadoFlujo.Cerrado
-                ? "Tiempo de certificación superado se pasa a garantía"
-                : "En proceso de certificación / esperando paso a producción";
+            else if (DateTime.Today > t.FechaCertificacion && !t.FechaRealPasoProduccion.HasValue)
+            {
+                t.Flujo = EstadoFlujo.Cerrado;
+                t.EstadoCalculado = "Tiempo de certificación superado, está en garantía";
+            }
+            else
+            {
+                t.Flujo = EstadoFlujo.EnCertificacion;
+                t.EstadoCalculado = "En proceso de certificación / esperando paso a producción";
+            }
         }
+
 
         /*-----------------------------------------------------
          *  Utilidades - Validación de días hábiles / Fecha festivas / Semana Santa 
          *----------------------------------------------------*/
+        private static DateTime AjustarAFechaHabil(DateTime fecha)
+        {
+            while (fecha.DayOfWeek == DayOfWeek.Saturday ||
+                   fecha.DayOfWeek == DayOfWeek.Sunday ||
+                   EsFestivo(fecha))
+            {
+                fecha = fecha.AddDays(1);
+            }
+
+            return fecha;
+        }
+
         private static DateTime SumarDiasHabiles(DateTime inicio, int dias)
         {
             var fecha = inicio;
@@ -110,13 +118,15 @@ namespace ModeloGarantiaTCS.Utils
 
             while (sumados < dias)
             {
+
                 if (fecha.DayOfWeek != DayOfWeek.Saturday &&
                     fecha.DayOfWeek != DayOfWeek.Sunday &&
                     !EsFestivo(fecha))
                 {
                     sumados++;
                 }
-                    fecha = fecha.AddDays(1);
+                fecha = fecha.AddDays(1);
+                    
             }
             return fecha;
         }
@@ -129,14 +139,18 @@ namespace ModeloGarantiaTCS.Utils
             {
                 new DateTime(year, 1, 1),
                 new DateTime(year, 5, 1),
+                new DateTime(year, 7, 20),
+                new DateTime(year, 8, 7),
+                new DateTime(year, 12, 8),
                 new DateTime(year, 12, 25),
             };
 
             var festivosTrasladables = new List<DateTime>
             {
-                new DateTime(year, 7, 20),
-                new DateTime(year, 8, 7),
-                new DateTime(year, 12, 8),
+                new DateTime(year, 1, 6),
+                new DateTime(year, 3, 19),
+                new DateTime(year, 6, 29),
+                new DateTime(year, 8, 15),
                 new DateTime(year, 10, 12),
                 new DateTime(year, 11, 1),
                 new DateTime(year, 11, 11),
@@ -149,7 +163,8 @@ namespace ModeloGarantiaTCS.Utils
             {
                 if (festivo.DayOfWeek != DayOfWeek.Monday)
                 {
-                    var traslado = festivo.AddDays((int)DayOfWeek.Monday - (int)festivo.DayOfWeek);
+                    int diasParaLunes = ((int)DayOfWeek.Monday - (int)festivo.DayOfWeek + 7) % 7;
+                    var traslado = festivo.AddDays(diasParaLunes);
                     if (fecha.Date == traslado.Date)
                         return true;
                 }
@@ -173,24 +188,9 @@ namespace ModeloGarantiaTCS.Utils
             return false;
         }
 
+        //Algoritmo para el calendario lunar (Semana santa)
         private static DateTime CalcularPascua(int year)
         {
-            //int a = year % 19;
-            //int b = year / 100;
-            //int c = year % 100;
-            //int d = b / 4;
-            //int e = b % 4;
-            //int f = (b + 8) / 25;
-            //int g = (b - f + 1) / 3;
-            //int h = (19 * a + b - d - g + 15) % 30;
-            //int i = c / 4;
-            //int k = c % 4;
-            //int l = (32 + 2 * e + 2 * i - h - k) % 7;
-            //int m = (a + 11 * h + 22 * l) / 451;
-            //int month = (h + l - 7 * m + 114) / 31;
-            //int day = ((h + l - 7 * m + 114) % 31) + 1;
-
-            //return new DateTime(year, month, day);
             int day = 0;
             int month = 0;
 

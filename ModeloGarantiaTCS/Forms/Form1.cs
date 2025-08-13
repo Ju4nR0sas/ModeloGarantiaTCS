@@ -19,8 +19,9 @@ namespace ModeloGarantiaTCS
         private int _registrosPorPagina;
         private PaginacionService<Ticket> _paginador = new PaginacionService<Ticket>(new List<Ticket>(), 10);
         private bool _filtroActivo = false;
-        private static readonly DateTime fechaActual = DateTime.Now;
+        private static readonly DateTime fechaActual = DateTime.Today;
         private bool ocultarPasoProduccionEnProximoBinding = false;
+        private string _nombreFiltroActual = "";
 
         //PRUEBA
         private const int WM_NCLBUTTONDOWN = 0x00A1;
@@ -29,8 +30,11 @@ namespace ModeloGarantiaTCS
         {
             InitializeComponent();
 
-            // Se agrega un evento al botón de filtro
-            contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(ContexMenu_ItemClicked);
+        // Se agrega un evento al botón de filtro
+        contextMenuStrip1.ItemClicked += new ToolStripItemClickedEventHandler(ContexMenu_ItemClicked);
+            //Submenu
+            enGarantíaToolStripMenuItem.Click += (s, e) => EnGarantia();
+            garantíaVencidaToolStripMenuItem.Click += (s, e) => GarantiaVencida();
 
             // Configura DataGridView como solo lectura
             dataGridViewTickets.ReadOnly = true;
@@ -105,11 +109,13 @@ namespace ModeloGarantiaTCS
         }
         #endregion
 
+        #region Ticket y Load
+
         /* Devuelve true si existe al menos un ticket cargado
          * de lo contrario muestra un mensaje y devuelve false.*/
         private bool HayTicketsCargados()
         {
-            dataGridViewTickets.DataBindingComplete += dataGridViewTickets_DataBindingComplete;
+            dataGridViewTickets.DataBindingComplete += dataGridViewTickets_DataBindingComplete;   
 
             if (_tickets == null || _tickets.Count == 0)
             {
@@ -122,6 +128,12 @@ namespace ModeloGarantiaTCS
             }
             return true;
         }
+
+        private void EnGarantíaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         // Se define una ruta absoluta
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -145,8 +157,49 @@ namespace ModeloGarantiaTCS
             {
                 MessageBox.Show($"Error cargando la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+            #region Leyenda
+            //Leyenda
+            //Panel Rojo
+            Panel panelRojo = new Panel();
+            panelRojo.BackColor = Color.Red;
+            panelRojo.Size = new Size(20, 20);
+            panelRojo.Location = new Point(20, 15);
+            this.Controls.Add(panelRojo);
 
+            Label labelRojo = new Label();
+            labelRojo.Text = "Vencido";
+            labelRojo.Location = new Point(45, 18);
+            labelRojo.AutoSize = true;
+            this.Controls.Add(labelRojo);
+
+            // Panel Amarillo 
+            Panel panelAmarillo = new Panel();
+            panelAmarillo.BackColor = Color.Yellow;
+            panelAmarillo.Size = new Size(20, 20);
+            panelAmarillo.Location = new Point(110, 15);
+            this.Controls.Add(panelAmarillo);
+
+            Label labelAmarillo = new Label();
+            labelAmarillo.Text = "Por Vencer Garantía";
+            labelAmarillo.Location = new Point(135, 18);
+            labelAmarillo.AutoSize = true;
+            this.Controls.Add(labelAmarillo);
+
+            // Panel Verde
+            Panel panelVerde = new Panel();
+            panelVerde.BackColor = Color.Green;
+            panelVerde.Size = new Size(20, 20);
+            panelVerde.Location = new Point(270, 15);
+            this.Controls.Add(panelVerde);
+
+            Label labelVerde = new Label();
+            labelVerde.Text = "Cerrado";
+            labelVerde.Location = new Point(295, 18);
+            labelVerde.AutoSize = true;
+            this.Controls.Add(labelVerde);
+            #endregion
+        }
+        #endregion
 
         #region Eventos de Filtro
         private void btnFilter_Click(object sender, EventArgs e)
@@ -155,6 +208,7 @@ namespace ModeloGarantiaTCS
 
             contextMenuStrip1.Show(btnFilter, new Point(0, btnFilter.Height));
         }
+
 
         //Switch de menú principal
         private void ContexMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -165,7 +219,6 @@ namespace ModeloGarantiaTCS
                     SinCertificacion();
                     break;
                 case "certificaciónVencidaToolStripMenuItem":
-                    EnGarantia();
                     break;
                 case "cerradosToolStripMenuItem":
                     EstadoCerrado();
@@ -184,10 +237,12 @@ namespace ModeloGarantiaTCS
         //Sin Certificación - "Vacíos"
         public void SinCertificacion()
         {
+            if (_nombreFiltroActual == "Filtrado: Sin Certificación") return;
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
-                .Where(t => t.FechaCertificacion == null)
+                .Where(t => t.FechaCertificacion == null &&
+                t.Estado != "Cerrado")
                 .ToList();
 
             dataGridViewTickets.DataSource = filtrados;
@@ -198,15 +253,16 @@ namespace ModeloGarantiaTCS
         //Certificación Vencida
         private void EnGarantia()
         {
+            if (_nombreFiltroActual == "Filtrado: En Garantía") return;
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
                 .Where(t => t.FechaCertificacion < fechaActual &&
                 !t.FechaRealPasoProduccion.HasValue &&
-                t.FechaTentativaPasoProduccion < fechaActual)
+                t.FechaTentativaGarantia >= fechaActual &&
+                t.Estado != "Cerrado") 
                 .ToList();
 
-            
             dataGridViewTickets.DataSource = filtrados;
 
             AplicarEstiloGrid();
@@ -214,9 +270,28 @@ namespace ModeloGarantiaTCS
             OcultarPasoProduccion();
         }
 
+        //Garantía Vencida
+        private void GarantiaVencida()
+        {
+            if (_nombreFiltroActual == "Filtrado: Vencida") return;
+            if (!HayTicketsCargados()) return;
+
+            var filtrados = _tickets
+                .Where(t => t.FechaTentativaGarantia < fechaActual &&
+                t.Estado != "Cerrado")
+                .ToList();
+
+            dataGridViewTickets.DataSource = filtrados;
+
+            AplicarEstiloGrid();
+            ActivarFiltroVista("Filtrado: Vencida");
+            OcultarPasoProduccion();
+        }
+
         //Estado Cerrado
         public void EstadoCerrado()
         {
+            if (_nombreFiltroActual == "Filtrado: Cerrado") return;
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
@@ -225,23 +300,13 @@ namespace ModeloGarantiaTCS
 
             dataGridViewTickets.DataSource = filtrados;
             AplicarEstiloGrid();
-
-            // Foreach para pintar las celdas
-            foreach (DataGridViewRow row in dataGridViewTickets.Rows)
-            {
-                if (row.Cells["Estado"].Value != null &&
-                    row.Cells["Estado"].Value.ToString() == "Cerrado")
-                {
-                    row.DefaultCellStyle.BackColor = Color.LightGreen;
-                }
-            }
-
             ActivarFiltroVista("Filtrado: Cerrados");
         }
 
         //Los que ya tienen certificación y una fecha tentativa de paso a producción
         public void FechasTentativas()
         {
+            if (_nombreFiltroActual == "Filtrado: Tentativas") return;
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
@@ -257,6 +322,7 @@ namespace ModeloGarantiaTCS
         //Fechas actuales
         public void FechasActuales()
         {
+            if (_nombreFiltroActual == "Filtrado: Actuales") return;
             if (!HayTicketsCargados()) return;
 
             var filtrados = _tickets
@@ -369,6 +435,7 @@ namespace ModeloGarantiaTCS
         private void ActivarFiltroVista(string descripcion)
         {
             _filtroActivo = true;
+            _nombreFiltroActual = descripcion;
             btnAnterior.Enabled = false;
             btnSiguiente.Enabled = false;
             lblPagina.Text = descripcion;
@@ -378,9 +445,11 @@ namespace ModeloGarantiaTCS
         private void DesactivarFiltroVista()
         {
             _filtroActivo = false;
+            _nombreFiltroActual = "";
             btnAnterior.Enabled = true;
             btnSiguiente.Enabled = true;
         }
+
         #endregion
 
         #region Carga y Exportación CSV
@@ -481,14 +550,34 @@ namespace ModeloGarantiaTCS
             if (dataGridViewTickets.Columns["EsfuerzoTotal"] != null)
                 dataGridViewTickets.Columns["EsfuerzoTotal"].DefaultCellStyle.Format = "N2";
 
-            // Color para filas con paso a producción vencido
+            //// Color para filas con paso a producción vencido
             foreach (DataGridViewRow row in dataGridViewTickets.Rows)
             {
                 if (row.Cells["FechaCertificacion"].Value != null &&
                     DateTime.TryParse(row.Cells["FechaCertificacion"].Value.ToString(), out DateTime fechaProd) &&
                     fechaProd < DateTime.Today)
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb( 255, 171, 171);
+                    row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                }
+            }
+
+            foreach (DataGridViewRow row in dataGridViewTickets.Rows)
+            {
+                if (row.Cells["FechaTentativaGarantia"].Value != null &&
+                    DateTime.TryParse(row.Cells["FechaTentativaGarantia"].Value.ToString(), out DateTime fechaProd) &&
+                    fechaProd < DateTime.Today)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                } 
+            }
+
+            // Foreach para pintar las celdas en estado CERRADO
+            foreach (DataGridViewRow row in dataGridViewTickets.Rows)
+            {
+                if (row.Cells["Estado"].Value != null &&
+                    row.Cells["Estado"].Value.ToString() == "Cerrado")
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
 

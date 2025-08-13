@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ModeloGarantiaTCS.exe" size="263080">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ModeloGarantiaTCS.exe" size="265640">
       <assemblyIdentity name="ModeloGarantiaTCS" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZuFbj591nV6ys/xgGE/dBC0QdBCPciZG5WIW8ojqro4=</dsig:DigestValue>
+        <dsig:DigestValue>jREKEyNvEETR6x7hfXN94qax/nAcwQ5IkGxiYSrYheQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -34,15 +34,12 @@ namespace ModeloGarantiaTCS.Services
                         horas = LeerDouble(fila,
                             "Esfuerzo estimado total horas",
                             "Campo personalizado (Esfuerzo estimado total horas)");
-                    }
-                    else // Solicitud de software y otros
-                    {
+                    } else
                         horas = LeerDouble(fila,
-                            "Esfuerzo estimado total horas",
-                            "Campo personalizado (Esfuerzo estimado total horas)",
-                            "Campo personalizado (Esfuerzo Total)",
-                            "Esfuerzo Total");
-                    }
+                                "Esfuerzo estimado total horas",
+                                "Campo personalizado (Esfuerzo estimado total horas)",
+                                "Campo personalizado (Esfuerzo Total)",
+                                "Esfuerzo Total");
 
                     // Ignorar esfuerzos no válidos
                     if (horas <= 0)

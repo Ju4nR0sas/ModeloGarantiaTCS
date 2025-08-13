@@ -47,6 +47,8 @@ namespace ModeloGarantiaTCS
             this.cerradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificaciónVencidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fechasTentativasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enGarantíaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.garantíaVencidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +77,7 @@ namespace ModeloGarantiaTCS
             this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.RowHeadersWidth = 51;
-            this.dataGridViewTickets.Size = new System.Drawing.Size(964, 481);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(977, 481);
             this.dataGridViewTickets.TabIndex = 1;
             this.dataGridViewTickets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_CellContentClick);
             // 
@@ -95,17 +97,17 @@ namespace ModeloGarantiaTCS
             // 
             this.txtFiltroClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFiltroClave.Location = new System.Drawing.Point(359, 16);
+            this.txtFiltroClave.Location = new System.Drawing.Point(493, 16);
             this.txtFiltroClave.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtFiltroClave.Name = "txtFiltroClave";
-            this.txtFiltroClave.Size = new System.Drawing.Size(373, 25);
+            this.txtFiltroClave.Size = new System.Drawing.Size(252, 25);
             this.txtFiltroClave.TabIndex = 3;
             this.txtFiltroClave.TextChanged += new System.EventHandler(this.txtFiltroClave_TextChanged);
             // 
             // btnFiltrar
             // 
             this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFiltrar.Location = new System.Drawing.Point(740, 12);
+            this.btnFiltrar.Location = new System.Drawing.Point(753, 12);
             this.btnFiltrar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(93, 29);
@@ -117,7 +119,7 @@ namespace ModeloGarantiaTCS
             // btnAnterior
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnterior.Location = new System.Drawing.Point(754, 543);
+            this.btnAnterior.Location = new System.Drawing.Point(767, 543);
             this.btnAnterior.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(28, 29);
@@ -129,7 +131,7 @@ namespace ModeloGarantiaTCS
             // btnSiguiente
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSiguiente.Location = new System.Drawing.Point(933, 543);
+            this.btnSiguiente.Location = new System.Drawing.Point(946, 543);
             this.btnSiguiente.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(28, 29);
@@ -142,7 +144,7 @@ namespace ModeloGarantiaTCS
             // 
             this.lblPagina.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPagina.AutoSize = true;
-            this.lblPagina.Location = new System.Drawing.Point(811, 549);
+            this.lblPagina.Location = new System.Drawing.Point(824, 549);
             this.lblPagina.Name = "lblPagina";
             this.lblPagina.Size = new System.Drawing.Size(59, 17);
             this.lblPagina.TabIndex = 7;
@@ -152,7 +154,7 @@ namespace ModeloGarantiaTCS
             // btnBorrarFiltro
             // 
             this.btnBorrarFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBorrarFiltro.Location = new System.Drawing.Point(840, 12);
+            this.btnBorrarFiltro.Location = new System.Drawing.Point(853, 12);
             this.btnBorrarFiltro.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnBorrarFiltro.Name = "btnBorrarFiltro";
             this.btnBorrarFiltro.Size = new System.Drawing.Size(87, 29);
@@ -164,7 +166,7 @@ namespace ModeloGarantiaTCS
             // btnFilter
             // 
             this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFilter.Location = new System.Drawing.Point(933, 12);
+            this.btnFilter.Location = new System.Drawing.Point(946, 12);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(44, 29);
@@ -181,37 +183,52 @@ namespace ModeloGarantiaTCS
             this.certificaciónVencidaToolStripMenuItem,
             this.fechasTentativasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(288, 100);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(218, 100);
             // 
             // sinCertificaciónToolStripMenuItem
             // 
             this.sinCertificaciónToolStripMenuItem.Name = "sinCertificaciónToolStripMenuItem";
-            this.sinCertificaciónToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.sinCertificaciónToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
             this.sinCertificaciónToolStripMenuItem.Text = "Aún sin Certificación";
             // 
             // cerradosToolStripMenuItem
             // 
             this.cerradosToolStripMenuItem.Name = "cerradosToolStripMenuItem";
-            this.cerradosToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.cerradosToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
             this.cerradosToolStripMenuItem.Text = "Cerrados";
             // 
             // certificaciónVencidaToolStripMenuItem
             // 
+            this.certificaciónVencidaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enGarantíaToolStripMenuItem,
+            this.garantíaVencidaToolStripMenuItem});
             this.certificaciónVencidaToolStripMenuItem.Name = "certificaciónVencidaToolStripMenuItem";
-            this.certificaciónVencidaToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
-            this.certificaciónVencidaToolStripMenuItem.Text = "Certificación Vencida (Garantía)";
+            this.certificaciónVencidaToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.certificaciónVencidaToolStripMenuItem.Text = "Certificación Vencida";
             // 
             // fechasTentativasToolStripMenuItem
             // 
             this.fechasTentativasToolStripMenuItem.Name = "fechasTentativasToolStripMenuItem";
-            this.fechasTentativasToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.fechasTentativasToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
             this.fechasTentativasToolStripMenuItem.Text = "Fechas Tentativas";
+            // 
+            // enGarantíaToolStripMenuItem
+            // 
+            this.enGarantíaToolStripMenuItem.Name = "enGarantíaToolStripMenuItem";
+            this.enGarantíaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.enGarantíaToolStripMenuItem.Text = "En Garantía";
+            // 
+            // garantíaVencidaToolStripMenuItem
+            // 
+            this.garantíaVencidaToolStripMenuItem.Name = "garantíaVencidaToolStripMenuItem";
+            this.garantíaVencidaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.garantíaVencidaToolStripMenuItem.Text = "Garantía Vencida";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 589);
+            this.ClientSize = new System.Drawing.Size(1005, 589);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnBorrarFiltro);
             this.Controls.Add(this.lblPagina);
@@ -254,6 +271,8 @@ namespace ModeloGarantiaTCS
         private System.Windows.Forms.ToolStripMenuItem certificaciónVencidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fechasTentativasToolStripMenuItem;
         private ToolStripMenuItem cerradosToolStripMenuItem;
+        private ToolStripMenuItem enGarantíaToolStripMenuItem;
+        private ToolStripMenuItem garantíaVencidaToolStripMenuItem;
     }
 }
 
